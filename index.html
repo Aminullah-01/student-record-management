@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =========================
+        HEADER
+    ========================== -->
+
+    <header>
+        <h1>🎓 Student Record Manager</h1>
+        <p>Manage student records efficiently.</p>
+    </header>
+
+    <!-- =========================
+        STUDENT FORM
+
+        JavaScript Tasks:
+
+        • Read all input values
+        • Validate inputs
+        • Create Student Object
+        • Add student into array
+    ========================== -->
+
+    <section id="addStudent" class="card">
+        <div id="errors" style="color: red;"></div>
+        <h2>Add Student</h2>
+
+        <div class="form-grid">
+
+            <div class="input-group">
+                <label>Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter student name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Age</label>
+                <input
+                    type="number"
+                    id="studentAge"
+                    placeholder="18" required>
+            </div>
+
+            <div class="input-group">
+                <label>Score</label>
+                <input
+                    type="number"
+                    id="studentScore"
+                    placeholder="90" required>
+            </div>
+
+        </div>
+
+        <button id="addStudentBtn">
+            Add Student
+        </button>
+
+    </section>
+
+    <!-- =========================
+        SEARCH SECTION
+
+        JavaScript Tasks
+
+        • Search student
+
+        • Filter Passed Students
+
+        • Reset Table
+    ========================== -->
+
+    <section class="card">
+
+        <div class="search-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by name...">
+
+            <button id="searchBtn">
+                Search
+            </button>
+
+            <button id="passedBtn">
+                Passed Students
+            </button>
+
+            <button id="showAllBtn">
+                Show All
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+        TABLE
+
+        JavaScript should generate
+        all rows dynamically.
+
+    ========================== -->
+
+    <section class="card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Age</th>
+
+                    <th>Score</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="studentTable">
+
+                <!--
+
+                JavaScript should insert rows here.
+
+                Example
+
+                <tr>
+
+                ...
+
+                </tr>
+
+                -->
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- =========================
+        STATISTICS
+
+        JavaScript Updates
+
+        Total Students
+
+        Passed Students
+
+        Failed Students
+
+        Average Score
+
+    ========================== -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <h3 id="totalStudents">
+                0
+            </h3>
+
+            <p>Total Students</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3 id="passedStudents">
+                0
+            </h3>
+
+            <p>Passed</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3 id="failedStudents">
+                0
+            </h3>
+
+            <p>Failed</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3 id="averageScore">
+                0
+            </h3>
+
+            <p>Average Score</p>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
