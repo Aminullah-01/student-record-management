@@ -64,6 +64,7 @@ if (message.length > 0) {
         actionCellnew.type = "button";
         actionCellnew.addEventListener("click", () => {
             row.remove();
+            updateStatistics();
         })
 
         idCell.appendChild(idCellnew);
@@ -76,7 +77,83 @@ if (message.length > 0) {
     }
 
 
-    let totalStudents = document.getElementById("totalStudents");
+    addStudentToTable("studentTable");
+    updateStatistics();
+
+    
+})
+
+
+
+
+
+
+
+let searchBtn = document.getElementById("searchBtn");
+searchBtn.addEventListener("click", () => {
+
+    function searchStudent() {
+    let searchInput = document.getElementById("searchInput").value.toLowerCase();
+    let studentTable = document.getElementById("studentTable");
+    let rows = studentTable.getElementsByTagName("tr");
+
+    for (let i = 0; i < rows.length; i++) {
+        let nameCell = rows[i].getElementsByTagName("td")[1];
+        if (nameCell) {
+            let nameValue = nameCell.textContent || nameCell.innerText;
+            if (nameValue.toLowerCase().indexOf(searchInput.toLowerCase()) > -1) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+}
+
+    searchStudent();
+
+
+})
+
+
+
+let passedBtn = document.getElementById("passedBtn");
+passedBtn.addEventListener("click", () => {
+    const studentTable = document.getElementById("studentTable");
+    const rows = studentTable.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        const scoreCell = rows[i].getElementsByTagName("td")[3];
+        const score = Number(scoreCell?.textContent || 0);
+
+        rows[i].style.display = score >= 50 ? "" : "none";
+    }
+});
+
+
+
+
+
+
+let showAllBtn = document.getElementById("showAllBtn");
+showAllBtn.addEventListener("click", () => {
+    const studentTable = document.getElementById("studentTable");
+    const rows = studentTable.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        rows[i].style.display = "";
+    }
+})
+
+
+
+
+
+
+
+
+
+let totalStudents = document.getElementById("totalStudents");
 let passedStudents = document.getElementById("passedStudents");
 let failedStudents = document.getElementById("failedStudents");
 let averageScore = document.getElementById("averageScore");
@@ -102,20 +179,13 @@ function updateStatistics() {
         }
     });
 
-    totalStudents.textContent = 20;
-    passedStudents.textContent = 29;
+    totalStudents.textContent = total;
+    passedStudents.textContent = pass;
     failedStudents.textContent = fail;
     averageScore.textContent = 
         total === 0 ? 0 : (totalScore / total).toFixed(2);
         
 }
-
-
-
-    addStudentToTable("studentTable");
-
-    
-})
 
 
 
